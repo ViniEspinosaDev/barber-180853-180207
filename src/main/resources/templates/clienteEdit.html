@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar cliente</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>Editar cliente</h1>
+    <a href="/">Menu |</a>
+    <a href="/clientes"> Clientes</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarCliente}" th:object="${cliente}" method="POST" id="idCliente">
+
+        <label>Cliente:</label> <span th:text="${cliente.idCliente}"></span>
+        <br>
+        <input type="hidden" th:value="${cliente.idCliente}" th:field="${cliente.idCliente}" name="idCliente" />
+        <input type="hidden" th:value="${cliente.agendamentos}" th:field="${cliente.agendamentos}"
+            name="agendamentos" />
+        <input type="hidden" th:value="${cliente.saloes}" th:field="${cliente.saloes}" name="saloes" />
+        <input type="hidden" th:value="${cliente.dataNascimento}" th:field="${cliente.dataNascimento}"
+            name="dataNascimento" />
+
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite o nome:" th:value="${cliente.nome}" name="nome" required />
+        <br>
+        <label>CPF:</label>
+        <input type="text" placeholder="Digite o cpf" th:value="${cliente.cpf}" name="cpf" required />
+        <br>
+        <label>Endereço:</label>
+        <input type="text" placeholder="Digite o endereço" th:value="${cliente.endereco}" name="endereco" required />
+        <br>
+        <label>Cidade:</label>
+        <input type="text" placeholder="Digite a cidade" th:value="${cliente.cidade}" name="cidade" required />
+        <br>
+        <label>Data Nascimento:</label>
+        <input type="date" placeholder="Digite a data de nascimento" th:value="${cliente.dataNascimento}"
+            name="dataNascimento" required />
+        <br>
+
+        Salão(ões):
+        <table>
+            <tr>
+                <th>Salão</th>
+                <th>Nome</th>
+                <th>Endereco</th>
+                <th>Detalhes</th>
+                <th>Remover Vinculo</th>
+            </tr>
+
+            <tr th:each="salao : ${cliente.saloes}">
+                <td th:text="${salao.idSalao}"></td>
+                <td th:text="${salao.nome}"></td>
+                <td th:text="${salao.endereco}"></td>
+                <td> <a th:href="@{'/detalhesSalao/' + ${salao.idSalao}}">Detalhes</a></td>
+                <td> <a th:href="@{'/removerSalaoCliente/'+ ${cliente.idCliente} +'/'+ ${salao.idSalao}}">Remover
+                        salão</a></td>
+            </tr>
+        </table>
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset" value="Cancelar" />
+    </form>
+
+</body>
+
+</html>

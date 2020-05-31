@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do cliente</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Detalhes do cliente</h1>
+    <a href="/">Menu |</a>
+    <a href="/clientes"> Clientes</a>
+    <br>
+    <br>
+    <b>Cliente: </b> <span th:text="${cliente.idCliente}"></span>
+    <br><b>Nome: </b> <span th:text="${cliente.nome}"></span>
+    <br><b>CPF: </b> <span th:text="${cliente.cpf}"></span>
+    <br><b>Endereço: </b> <span th:text="${cliente.endereco}"></span>
+    <br><b>Cidade: </b> <span th:text="${cliente.cidade}"></span>
+    <br><b>Data Nascimento: </b> <span th:date="${cliente.dataNascimento}"></span>
+    <br>
+    <br>
+
+    Agendamento(s):
+    <table>
+        <tr>
+            <th>Agendamento</th>
+            <th>Data</th>
+            <th>Detalhes</th>
+        </tr>
+
+        <tr th:each="agendamento : ${cliente.agendamentos}">
+            <td th:text="${agendamento.data}"></td>
+            <td> <a th:href="@{'/detalhesAgendamento/' + ${agendamento.idAgendamento}}">Detalhes</a></td>
+        </tr>
+    </table>
+    <br>
+
+    Salão(ões):
+    <table>
+        <tr>
+            <th>Salão</th>
+            <th>Nome</th>
+            <th>Endereco</th>
+            <th>Detalhes</th>
+        </tr>
+
+        <tr th:each="salao : ${cliente.saloes}">
+            <td th:text="${salao.idSalao}"></td>
+            <td th:text="${salao.nome}"></td>
+            <td th:text="${salao.endereco}"></td>
+            <td> <a th:href="@{'/detalhesSalao/' + ${salao.idSalao}}">Detalhes</a></td>
+        </tr>
+    </table>
+    <br>
+
+    <form th:action="@{/associarSalaoCliente(idCliente=${cliente.idCliente})}" method="POST">
+        <label>Adicionar salão:</label>
+        <select name="idSalao" required>
+            <option value="">Novo salão</option>
+            <option th:each="salao : ${saloes}" th:value="${salao.idSalao}" th:text="${salao.nome}">
+            </option>
+        </select>
+        <input type="submit" value="Associar salão" />
+    </form>
+
+</body>
+
+</html>
