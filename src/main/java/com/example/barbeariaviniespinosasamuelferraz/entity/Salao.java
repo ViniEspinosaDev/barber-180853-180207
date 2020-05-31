@@ -39,6 +39,10 @@ public class Salao implements Serializable {
             "idSalao" }), joinColumns = @JoinColumn(name = "idSalao"), inverseJoinColumns = @JoinColumn(name = "idCliente"))
     private List<Cliente> clientes;
 
+    @OneToMany
+    @JoinColumn(name = "idSalao")
+    private List<Agendamento> agendamentos;
+
     public int getIdSalao() {
         return idSalao;
     }
