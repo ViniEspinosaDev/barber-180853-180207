@@ -27,8 +27,8 @@ public class Salao implements Serializable {
 
     private String endereco;
     private String cidade;
-    private Time abre;
-    private Time fecha;
+    private Time horaAbre;
+    private Time horaFecha;
 
     @OneToMany
     @JoinColumn(name = "idSalao")
@@ -67,20 +67,20 @@ public class Salao implements Serializable {
         this.cidade = cidade;
     }
 
-    public Time getAbre() {
-        return abre;
+    public Time getHoraAbre() {
+        return horaAbre;
     }
 
-    public void setAbre(Time abre) {
-        this.abre = abre;
+    public void setHoraAbre(Time horaAbre) {
+        this.horaAbre = horaAbre;
     }
 
-    public Time getFecha() {
-        return fecha;
+    public Time getHoraFecha() {
+        return horaFecha;
     }
 
-    public void setFecha(Time fecha) {
-        this.fecha = fecha;
+    public void setHoraFecha(Time horaFecha) {
+        this.horaFecha = horaFecha;
     }
 
     public List<Barbeiro> getBarbeiros() {
@@ -101,8 +101,8 @@ public class Salao implements Serializable {
 
     @Override
     public String toString() {
-        return "Salao [abre=" + abre + ", barbeiros=" + barbeiros + ", cidade=" + cidade + ", clientes=" + clientes
-                + ", endereco=" + endereco + ", fecha=" + fecha + ", idSalao=" + idSalao + "]";
+        return "Salao [horaAbre=" + horaAbre + ", barbeiros=" + barbeiros + ", cidade=" + cidade + ", clientes="
+                + clientes + ", endereco=" + endereco + ", horaFecha=" + horaFecha + ", idSalao=" + idSalao + "]";
     }
 
 }
