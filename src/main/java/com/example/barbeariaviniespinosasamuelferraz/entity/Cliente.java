@@ -26,6 +26,7 @@ public class Cliente implements Serializable {
     private int idCliente;
 
     private String nome;
+    private String cidade;
     private String cpf;
     private String endereco;
     private Date dataNascimento;
@@ -95,10 +96,19 @@ public class Cliente implements Serializable {
         this.saloes = saloes;
     }
 
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
     @Override
     public String toString() {
-        return "Cliente [agendamentos=" + agendamentos + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento
-                + ", endereco=" + endereco + ", idCliente=" + idCliente + ", nome=" + nome + ", saloes=" + saloes + "]";
+        return "Cliente [agendamentos=" + agendamentos + ", cidade=" + cidade + ", cpf=" + cpf + ", dataNascimento="
+                + dataNascimento + ", endereco=" + endereco + ", idCliente=" + idCliente + ", nome=" + nome
+                + ", saloes=" + saloes + "]";
     }
 
 }
