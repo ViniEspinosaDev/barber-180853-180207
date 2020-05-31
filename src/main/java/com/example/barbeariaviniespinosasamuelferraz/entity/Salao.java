@@ -99,10 +99,19 @@ public class Salao implements Serializable {
         this.clientes = clientes;
     }
 
+    public List<Agendamento> getAgendamentos() {
+        return agendamentos;
+    }
+
+    public void setAgendamentos(List<Agendamento> agendamentos) {
+        this.agendamentos = agendamentos;
+    }
+
     @Override
     public String toString() {
-        return "Salao [horaAbre=" + horaAbre + ", barbeiros=" + barbeiros + ", cidade=" + cidade + ", clientes="
-                + clientes + ", endereco=" + endereco + ", horaFecha=" + horaFecha + ", idSalao=" + idSalao + "]";
+        return "Salao [agendamentos=" + agendamentos + ", barbeiros=" + barbeiros + ", cidade=" + cidade + ", clientes="
+                + clientes + ", endereco=" + endereco + ", horaAbre=" + horaAbre + ", horaFecha=" + horaFecha
+                + ", idSalao=" + idSalao + "]";
     }
 
 }
