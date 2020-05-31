@@ -27,7 +27,6 @@ public class ClienteService {
     }
 
     public boolean removerCliente(Cliente cliente) {
-        // Talvez fazer o tratamento aqui futuramente
         if (cliente.getSaloes().isEmpty() && cliente.getAgendamentos().isEmpty()) {
             clienteRepository.delete(cliente);
             return true;
