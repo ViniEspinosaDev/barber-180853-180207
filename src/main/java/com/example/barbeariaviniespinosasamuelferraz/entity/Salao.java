@@ -1,7 +1,7 @@
 package com.example.barbeariaviniespinosasamuelferraz.entity;
 
 import java.io.Serializable;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -26,11 +26,12 @@ public class Salao implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int idSalao;
 
+    private String nome;
     private String endereco;
     private String cidade;
 
-    //private Time horaAbre;
-    //private Time horaFecha;
+    private LocalTime horaAbre;
+    private LocalTime horaFecha;
 
     @OneToMany
     @JoinColumn(name = "idSalao")
@@ -68,23 +69,15 @@ public class Salao implements Serializable {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-/*
-    public Time getHoraAbre() {
+
+    public LocalTime getHoraAbre() {
         return horaAbre;
     }
 
-    public void setHoraAbre(Time horaAbre) {
+    public void setHoraAbre(LocalTime horaAbre) {
         this.horaAbre = horaAbre;
     }
 
-    public Time getHoraFecha() {
-        return horaFecha;
-    }
-
-    public void setHoraFecha(Time horaFecha) {
-        this.horaFecha = horaFecha;
-    }
-*/
     public List<Barbeiro> getBarbeiros() {
         return barbeiros;
     }
@@ -109,11 +102,20 @@ public class Salao implements Serializable {
         this.agendamentos = agendamentos;
     }
 
-    @Override
-    public String toString() {
-        return "Salao [agendamentos=" + agendamentos + ", barbeiros=" + barbeiros + ", cidade=" + cidade + ", clientes="
-                + clientes + ", endereco=" + endereco + ",  + " 
-                + ", idSalao=" + idSalao + "]";
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public LocalTime getHoraFecha() {
+        return horaFecha;
+    }
+
+    public void setHoraFecha(LocalTime horaFecha) {
+        this.horaFecha = horaFecha;
     }
 
 }

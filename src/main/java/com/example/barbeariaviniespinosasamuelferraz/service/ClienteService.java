@@ -38,6 +38,7 @@ public class ClienteService {
 
     public boolean removerSalaoCliente(Cliente cliente, Salao salao) {
 
+        cliente = clienteRepository.findById(cliente.getIdCliente()).get();
         List<Agendamento> agendamentosCliente = cliente.getAgendamentos();
 
         for (Agendamento agendamento : agendamentosCliente) {
@@ -46,9 +47,9 @@ public class ClienteService {
             }
         }
 
-        List<Salao> saloesCliente = cliente.getSaloes();
-        saloesCliente.remove(salao);
-        cliente.setSaloes(saloesCliente);
+        cliente.getSaloes().remove(salao);
+        clienteRepository.save(cliente);
+
         return true;
     }
 }

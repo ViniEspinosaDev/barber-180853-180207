@@ -96,7 +96,7 @@ public class ClienteController {
 
         clienteService.removerSalaoCliente(cliente, salaoService.getSalaoById(idSalao));
 
-        return "redirect:/editarCliente?idCliente='" + idCliente.toString();
+        return "redirect:/editarCliente?idCliente=" + idCliente.toString();
     }
 
 }

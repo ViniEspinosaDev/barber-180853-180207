@@ -67,8 +67,7 @@
                 <td th:text="${salao.nome}"></td>
                 <td th:text="${salao.endereco}"></td>
                 <td> <a th:href="@{'/detalhesSalao/' + ${salao.idSalao}}">Detalhes</a></td>
-                <td> <a th:href="@{'/removerSalaoCliente/'+ ${cliente.idCliente} +'/'+ ${salao.idSalao}}">Remover
-                        salão</a></td>
+                <td> <a th:href="@{'/removerSalaoCliente/' + ${cliente.idCliente} + '/' + ${salao.idSalao}}">Remover Salão</a></td>
             </tr>
         </table>
 

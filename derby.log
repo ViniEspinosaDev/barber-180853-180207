@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Mon Jun 01 19:21:14 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-71f9-7a53-0000124beb88 
-on database directory C:\Users\vinie\Documents\Arquivos\Vinicius\Estudo\Faculdade\5º Semestre\Programação Orientada a Objetos 2\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Mon Jun 01 20:36:37 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-723e-7abf-0000126cb600 
+on database directory C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@14dad5dc 
 Loaded from file:/C:/Users/vinie/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_60-b27
-user.dir=c:\Users\vinie\Documents\Arquivos\Vinicius\Estudo\Faculdade\5º Semestre\Programação Orientada a Objetos 2\barbearia-viniespinosa-samuelferraz
+user.dir=C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
