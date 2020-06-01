@@ -78,7 +78,7 @@ public class SalaoController {
 
         Salao salaoAux = salaoService.getSalaoById(salao.getIdSalao());
 
-        mv.addObject("Salao", salaoAux);
+        mv.addObject("salao", salaoAux);
 
         List<Cliente> clientesNaoAssociados = clienteService.getClientes();
         clientesNaoAssociados.removeAll(salaoAux.getClientes());
@@ -96,6 +96,6 @@ public class SalaoController {
 
         salaoService.removerClienteSalao(salao, clienteService.getClienteById(idCliente));
 
-        return "redirect:/editarSalao?idSalao='" + idSalao.toString();
+        return "redirect:/editarSalao?idSalao=" + idSalao.toString();
     }
 }

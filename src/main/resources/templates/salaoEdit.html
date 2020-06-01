@@ -27,8 +27,8 @@
         <label>Salão:</label> <span th:text="${salao.idSalao}"></span>
         <br>
         <input type="hidden" th:value="${salao.idSalao}" th:field="${salao.idSalao}" name="idSalao" />
-        <input type="hidden" th:value="${Salao.agendamentos}" th:field="${Salao.agendamentos}" name="agendamentos" />
-        <input type="hidden" th:value="${Salao.clientes}" th:field="${Salao.clientes}" name="clientes" />
+        <input type="hidden" th:value="${salao.agendamentos}" th:field="${salao.agendamentos}" name="agendamentos" />
+        <input type="hidden" th:value="${salao.clientes}" th:field="${salao.clientes}" name="clientes" />
         
 
         <label>Nome:</label>
@@ -65,7 +65,7 @@
                 <td th:text="${cliente.nome}"></td>
                 <td th:text="${cliente.cpf}"></td>
                 <td> <a th:href="@{'/detalhesCliente/' + ${cliente.idCliente}}">Detalhes</a></td>
-                <td> <a th:href="@{'/removerClienteSalao/'+ ${salao.idSalao} +'/+ ${cliente.idCliente}}">Remover salão</a></td>
+                <td> <a th:href="@{'/removerClienteSalao/'+ ${salao.idSalao} +'/'+ ${cliente.idCliente}}">Remover salão</a></td>
             </tr>
         </table>
 

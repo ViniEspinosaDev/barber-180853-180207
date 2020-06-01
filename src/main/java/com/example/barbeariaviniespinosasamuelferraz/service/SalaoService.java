@@ -38,6 +38,7 @@ public class SalaoService {
 
     public boolean removerClienteSalao(Salao salao, Cliente cliente) {
 
+        salao = salaoRepository.findById(salao.getIdSalao()).get();
         List<Agendamento> agendamentosSalao = salao.getAgendamentos();
 
         for (Agendamento agendamento : agendamentosSalao) {
@@ -46,9 +47,9 @@ public class SalaoService {
             }
         }
 
-        List<Cliente> clientesSalao = salao.getClientes();
-        clientesSalao.remove(cliente);
-        salao.setClientes(clientesSalao);
+        salao.getClientes().remove(cliente);
+        salaoRepository.save(salao);
+
         return true;
     }
 }
