@@ -56,7 +56,7 @@ public class ClienteController {
     }
 
     @GetMapping("/detalhesCliente/{idCliente}")
-    public ModelAndView getLivroDetalhes(@PathVariable(name = "idCliente") Integer idCliente) {
+    public ModelAndView getClienteDetalhes(@PathVariable(name = "idCliente") Integer idCliente) {
 
         Cliente cliente = clienteService.getClienteById(idCliente);
         ModelAndView mv = new ModelAndView("detalhesCliente");
@@ -96,7 +96,7 @@ public class ClienteController {
 
         clienteService.removerSalaoCliente(cliente, salaoService.getSalaoById(idSalao));
 
-        return "redirect:/editarCliente";
+        return "redirect:/editarCliente?idCliente='" + idCliente.toString();
     }
 
 }

@@ -2,6 +2,8 @@ package com.example.barbeariaviniespinosasamuelferraz.service;
 
 import java.util.List;
 
+import com.example.barbeariaviniespinosasamuelferraz.entity.Agendamento;
+import com.example.barbeariaviniespinosasamuelferraz.entity.Cliente;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Salao;
 import com.example.barbeariaviniespinosasamuelferraz.repository.SalaoRepository;
 
@@ -32,5 +34,21 @@ public class SalaoService {
             return true;
         }
         return false;
+    }
+
+    public boolean removerClienteSalao(Salao salao, Cliente cliente) {
+
+        List<Agendamento> agendamentosSalao = salao.getAgendamentos();
+
+        for (Agendamento agendamento : agendamentosSalao) {
+            if (agendamento.getCliente().equals(cliente)) {
+                return false;
+            }
+        }
+
+        List<Cliente> clientesSalao = salao.getClientes();
+        clientesSalao.remove(cliente);
+        salao.setClientes(clientesSalao);
+        return true;
     }
 }

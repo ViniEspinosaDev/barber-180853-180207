@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
 import javax.persistence.UniqueConstraint;
 
 @Entity
@@ -27,8 +28,9 @@ public class Salao implements Serializable {
 
     private String endereco;
     private String cidade;
-    private Time horaAbre;
-    private Time horaFecha;
+
+    //private Time horaAbre;
+    //private Time horaFecha;
 
     @OneToMany
     @JoinColumn(name = "idSalao")
@@ -66,7 +68,7 @@ public class Salao implements Serializable {
     public void setCidade(String cidade) {
         this.cidade = cidade;
     }
-
+/*
     public Time getHoraAbre() {
         return horaAbre;
     }
@@ -82,7 +84,7 @@ public class Salao implements Serializable {
     public void setHoraFecha(Time horaFecha) {
         this.horaFecha = horaFecha;
     }
-
+*/
     public List<Barbeiro> getBarbeiros() {
         return barbeiros;
     }
@@ -110,7 +112,7 @@ public class Salao implements Serializable {
     @Override
     public String toString() {
         return "Salao [agendamentos=" + agendamentos + ", barbeiros=" + barbeiros + ", cidade=" + cidade + ", clientes="
-                + clientes + ", endereco=" + endereco + ", horaAbre=" + horaAbre + ", horaFecha=" + horaFecha
+                + clientes + ", endereco=" + endereco + ",  + " 
                 + ", idSalao=" + idSalao + "]";
     }
 
