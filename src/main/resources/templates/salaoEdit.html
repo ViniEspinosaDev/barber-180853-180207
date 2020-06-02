@@ -29,7 +29,8 @@
         <input type="hidden" th:value="${salao.idSalao}" th:field="${salao.idSalao}" name="idSalao" />
         <input type="hidden" th:value="${salao.agendamentos}" th:field="${salao.agendamentos}" name="agendamentos" />
         <input type="hidden" th:value="${salao.clientes}" th:field="${salao.clientes}" name="clientes" />
-        
+        <input type="hidden" th:value="${salao.endereco}" th:field="${salao.endereco}" name="endereco" />
+
 
         <label>Nome:</label>
         <input type="text" placeholder="Digite o nome:" th:value="${salao.nome}" name="nome" required />
@@ -65,7 +66,8 @@
                 <td th:text="${cliente.nome}"></td>
                 <td th:text="${cliente.cpf}"></td>
                 <td> <a th:href="@{'/detalhesCliente/' + ${cliente.idCliente}}">Detalhes</a></td>
-                <td> <a th:href="@{'/removerClienteSalao/'+ ${salao.idSalao} +'/'+ ${cliente.idCliente}}">Remover salão</a></td>
+                <td> <a th:href="@{'/removerClienteSalao/'+ ${salao.idSalao} +'/'+ ${cliente.idCliente}}">Remover
+                        salão</a></td>
             </tr>
         </table>
 

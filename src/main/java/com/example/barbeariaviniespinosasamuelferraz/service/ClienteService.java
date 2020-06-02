@@ -29,7 +29,10 @@ public class ClienteService {
     }
 
     public boolean removerCliente(Cliente cliente) {
-        if (cliente.getSaloes().isEmpty() && cliente.getAgendamentos().isEmpty()) {
+
+        cliente = clienteRepository.findById(cliente.getIdCliente()).get();
+
+        if (cliente.getSaloes().size() == 0 && cliente.getAgendamentos().size() == 0) {
             clienteRepository.delete(cliente);
             return true;
         }

@@ -99,4 +99,12 @@ public class ClienteController {
         return "redirect:/editarCliente?idCliente=" + idCliente.toString();
     }
 
+    @GetMapping("/removerCliente")
+    public String removerCliente(@ModelAttribute Cliente cliente, @RequestParam Integer idCliente) {
+
+        clienteService.removerCliente(cliente);
+
+        return "redirect:/clientes";
+    }
+
 }
