@@ -29,7 +29,9 @@ public class SalaoService {
     }
 
     public boolean removerSalao(Salao salao) {
-        if (salao.getBarbeiros().isEmpty() && salao.getClientes().isEmpty() && salao.getAgendamentos().isEmpty()) {
+        salao = salaoRepository.findById(salao.getIdSalao()).get();
+
+        if (salao.getClientes().size() == 0 && salao.getAgendamentos().size() == 0) {
             salaoRepository.delete(salao);
             return true;
         }

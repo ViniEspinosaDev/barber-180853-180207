@@ -98,4 +98,12 @@ public class SalaoController {
 
         return "redirect:/editarSalao?idSalao=" + idSalao.toString();
     }
+
+    @GetMapping("/removerSalao")
+    public String removerSalao(@ModelAttribute Salao salao, @RequestParam Integer idSalao) {
+
+        salaoService.removerSalao(salao);
+
+        return "redirect:/saloes";
+    }
 }
