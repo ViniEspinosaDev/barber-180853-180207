@@ -44,6 +44,24 @@
     </table>
     <br>
 
+    Barbeiro(s):
+    <table>
+        <tr>
+            <th>Barbeiro</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Detalhes</th>
+        </tr>
+
+        <tr th:each="barbeiro : ${salao.barbeiros}">
+            <td th:text="${barbeiro.idBarbeiro}"></td>
+            <td th:text="${barbeiro.nome}"></td>
+            <td th:text="${barbeiro.cpf}"></td>
+            <td> <a th:href="@{'/detalhesBarbeiro/' + ${barbeiro.idBarbeiro}}">Detalhes</a></td>
+        </tr>
+    </table>
+    <br>
+
     Cliente(s):
     <table>
         <tr>

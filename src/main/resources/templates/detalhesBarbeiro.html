@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do barbeiro</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Detalhes do barbeiro</h1>
+    <a href="/">Menu |</a>
+    <a href="/barbeiros"> Barbeiros</a>
+    <br>
+    <br>
+    <b>Barbeiro: </b> <span th:text="${barbeiro.idBarbeiro}"></span>
+    <br><b>Nome: </b> <span th:text="${barbeiro.nome}"></span>
+    <br><b>CPF: </b> <span th:text="${barbeiro.cpf}"></span>
+    <br><b>Endereço: </b> <span th:text="${barbeiro.endereco}"></span>
+    <br><b>Cidade: </b> <span th:text="${barbeiro.cidade}"></span>
+    <br><b>Salão: </b> <span th:text="${barbeiro.salao?.nome}"></span>
+    <br>
+    <br>
+
+    Agendamento(s):
+    <table>
+        <tr>
+            <th>Agendamento</th>
+            <th>Data</th>
+            <th>Detalhes</th>
+        </tr>
+
+        <tr th:each="agendamento : ${barbeiro.agendamentos}">
+            <td th:text="${agendamento.data}"></td>
+            <td> <a th:href="@{'/detalhesAgendamento/' + ${agendamento.idAgendamento}}">Detalhes</a></td>
+        </tr>
+    </table>
+    <br>
+
+
+
+</body>
+
+</html>

@@ -45,9 +45,9 @@
         <label>Cidade:</label>
         <input type="text" placeholder="Digite a cidade" th:value="${barbeiro.cidade}" name="cidade" required />
         <br>
-
+        <label>Salão:</label>
         <select name="idSalao" required>
-            <option value="">Salão</option>
+            <option value="">Vincule salão</option>
             <option th:each="salao : ${saloes}" th:value="${salao.idSalao}" th:text="${salao.nome}">
             </option>
         </select>

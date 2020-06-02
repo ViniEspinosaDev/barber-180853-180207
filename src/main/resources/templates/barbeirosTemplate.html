@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbeiros</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Cadastro de barbeiro</h1>
+    <a href="/">Menu</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarBarbeiro}" method="POST">
+        <label>Nome:</label><input type="text" name="nome" required />
+        <label>CPF:</label><input type="text" name="cpf" required />
+        <label>Endereço:</label><input type="endereco" required />
+        <label>Cidade:</label><input type="text" name="cidade" required />
+
+
+        <input type="submit" value="Salvar" />
+        <input type="reset" value="Limpar" />
+    </form>
+    <br>
+
+    <table>
+        <tr>
+            <th>Barbeiro</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Detalhes</th>
+            <th>Editar</th>
+            <th>Remover</th>
+        </tr>
+        <tr th:each="barbeiro : ${barbeiros}">
+            <td th:text="${barbeiro.idBarbeiro}"></td>
+            <td th:text="${barbeiro.nome}"></td>
+            <td th:text="${barbeiro.cpf}"></td>
+            <td> <a th:href="@{'/detalhesBarbeiro/' + ${barbeiro.idBarbeiro}}">Detalhes</a></td>
+            <td> <a th:href="@{'/editarBarbeiro?idBarbeiro=' + ${barbeiro.idBarbeiro}}">Editar</a></td>
+            <td> <a th:href="@{'/removerBarbeiro?idBarbeiro=' + ${barbeiro.idBarbeiro}}">Remover</a></td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
