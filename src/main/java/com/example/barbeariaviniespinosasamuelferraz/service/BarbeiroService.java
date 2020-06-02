@@ -27,7 +27,9 @@ public class BarbeiroService {
     }
 
     public boolean removerBarbeiro(Barbeiro barbeiro) {
-        if (barbeiro.getAgendamento().isEmpty() && barbeiro.getSalao().equals(null)) {
+        barbeiro = barbeiroRepository.findById(barbeiro.getIdBarbeiro()).get();
+
+        if (barbeiro.getAgendamentos().size() == 0) {
             barbeiroRepository.delete(barbeiro);
             return true;
         }

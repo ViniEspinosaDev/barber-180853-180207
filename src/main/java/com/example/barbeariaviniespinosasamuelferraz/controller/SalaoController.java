@@ -2,8 +2,10 @@ package com.example.barbeariaviniespinosasamuelferraz.controller;
 
 import java.util.List;
 
+import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Cliente;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Salao;
+import com.example.barbeariaviniespinosasamuelferraz.service.BarbeiroService;
 import com.example.barbeariaviniespinosasamuelferraz.service.ClienteService;
 import com.example.barbeariaviniespinosasamuelferraz.service.SalaoService;
 
@@ -24,6 +26,9 @@ public class SalaoController {
 
     @Autowired
     private ClienteService clienteService;
+
+    @Autowired
+    private BarbeiroService barbeiroService;
 
     @GetMapping("/saloes")
     public ModelAndView getSaloes() {
@@ -55,6 +60,18 @@ public class SalaoController {
         return "redirect:/detalhesSalao/" + idSalao.toString();
     }
 
+    @PostMapping("/associarBarbeiroSalao")
+    public String associarBarbeiro(@ModelAttribute Barbeiro barbeiro, @RequestParam Integer idSalao) {
+
+        Salao salao = salaoService.getSalaoById(idSalao);
+        barbeiro = barbeiroService.getBarbeiroById(barbeiro.getIdBarbeiro());
+
+        salao.getBarbeiros().add(barbeiro);
+        salaoService.salvarSalao(salao);
+
+        return "redirect:/detalhesSalao/" + idSalao.toString();
+    }
+
     @GetMapping("/detalhesSalao/{idSalao}")
     public ModelAndView getSalaoDetalhes(@PathVariable(name = "idSalao") Integer idSalao) {
 
@@ -67,6 +84,11 @@ public class SalaoController {
         clientesNaoAssociados.removeAll(salao.getClientes());
 
         mv.addObject("clientes", clientesNaoAssociados);
+
+        List<Barbeiro> barbeirosNaoAssociados = barbeiroService.getBarbeiros();
+        barbeirosNaoAssociados.removeAll(salao.getBarbeiros());
+
+        mv.addObject("barbeiros", barbeirosNaoAssociados);
 
         return mv;
     }
@@ -85,6 +107,11 @@ public class SalaoController {
 
         mv.addObject("clientes", clientesNaoAssociados);
 
+        List<Barbeiro> barbeirosNaoAssociados = barbeiroService.getBarbeiros();
+        barbeirosNaoAssociados.removeAll(salaoAux.getBarbeiros());
+
+        mv.addObject("barbeiros", barbeirosNaoAssociados);
+
         return mv;
     }
 
@@ -95,6 +122,17 @@ public class SalaoController {
         Salao salao = salaoService.getSalaoById(idSalao);
 
         salaoService.removerClienteSalao(salao, clienteService.getClienteById(idCliente));
+
+        return "redirect:/editarSalao?idSalao=" + idSalao.toString();
+    }
+
+    @GetMapping("/removerBarbeiroSalao/{idSalao}/{idBarbeiro}")
+    public String removerBarbeiroSalao(@PathVariable(name = "idSalao") Integer idSalao,
+            @PathVariable(name = "idBarbeiro") Integer idBarbeiro) {
+
+        Salao salao = salaoService.getSalaoById(idSalao);
+
+        salaoService.removerBarbeiroSalao(salao, barbeiroService.getBarbeiroById(idBarbeiro));
 
         return "redirect:/editarSalao?idSalao=" + idSalao.toString();
     }

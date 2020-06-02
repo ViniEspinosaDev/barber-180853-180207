@@ -3,6 +3,7 @@ package com.example.barbeariaviniespinosasamuelferraz.service;
 import java.util.List;
 
 import com.example.barbeariaviniespinosasamuelferraz.entity.Agendamento;
+import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Cliente;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Salao;
 import com.example.barbeariaviniespinosasamuelferraz.repository.SalaoRepository;
@@ -31,7 +32,8 @@ public class SalaoService {
     public boolean removerSalao(Salao salao) {
         salao = salaoRepository.findById(salao.getIdSalao()).get();
 
-        if (salao.getClientes().size() == 0 && salao.getAgendamentos().size() == 0) {
+        if (salao.getClientes().size() == 0 && salao.getAgendamentos().size() == 0
+                && salao.getBarbeiros().size() == 0) {
             salaoRepository.delete(salao);
             return true;
         }
@@ -50,6 +52,23 @@ public class SalaoService {
         }
 
         salao.getClientes().remove(cliente);
+        salaoRepository.save(salao);
+
+        return true;
+    }
+
+    public boolean removerBarbeiroSalao(Salao salao, Barbeiro barbeiro) {
+
+        salao = salaoRepository.findById(salao.getIdSalao()).get();
+        List<Agendamento> agendamentosSalao = salao.getAgendamentos();
+
+        for (Agendamento agendamento : agendamentosSalao) {
+            if (agendamento.getBarbeiro().equals(barbeiro)) {
+                return false;
+            }
+        }
+
+        salao.getBarbeiros().remove(barbeiro);
         salaoRepository.save(salao);
 
         return true;

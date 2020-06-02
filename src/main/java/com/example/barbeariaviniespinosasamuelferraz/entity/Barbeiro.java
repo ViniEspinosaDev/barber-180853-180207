@@ -33,7 +33,7 @@ public class Barbeiro implements Serializable {
 
     @OneToMany
     @JoinColumn(name = "idBarbeiro")
-    private List<Agendamento> agendamento;
+    private List<Agendamento> agendamentos;
 
     public int getIdBarbeiro() {
         return idBarbeiro;
@@ -83,18 +83,18 @@ public class Barbeiro implements Serializable {
         this.salao = salao;
     }
 
-    public List<Agendamento> getAgendamento() {
-        return agendamento;
+    public List<Agendamento> getAgendamentos() {
+        return agendamentos;
     }
 
-    public void setAgendamento(List<Agendamento> agendamento) {
-        this.agendamento = agendamento;
+    public void setAgendamentos(List<Agendamento> agendamentos) {
+        this.agendamentos = agendamentos;
     }
 
     @Override
     public String toString() {
-        return "Barbeiro [agendamento=" + agendamento + ", cidade=" + cidade + ", cpf=" + cpf + ", endereco=" + endereco
-                + ", idBarbeiro=" + idBarbeiro + ", nome=" + nome + ", salao=" + salao + "]";
+        return "Barbeiro [agendamentos=" + agendamentos + ", cidade=" + cidade + ", cpf=" + cpf + ", endereco="
+                + endereco + ", idBarbeiro=" + idBarbeiro + ", nome=" + nome + ", salao=" + salao + "]";
     }
 
 }
