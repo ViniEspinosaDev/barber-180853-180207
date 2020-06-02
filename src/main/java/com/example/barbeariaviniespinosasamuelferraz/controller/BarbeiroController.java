@@ -3,10 +3,7 @@ package com.example.barbeariaviniespinosasamuelferraz.controller;
 import java.util.List;
 
 import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
-import com.example.barbeariaviniespinosasamuelferraz.entity.Salao;
-import com.example.barbeariaviniespinosasamuelferraz.repository.SalaoRepository;
 import com.example.barbeariaviniespinosasamuelferraz.service.BarbeiroService;
-import com.example.barbeariaviniespinosasamuelferraz.service.SalaoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,9 +19,6 @@ public class BarbeiroController {
 
     @Autowired
     private BarbeiroService barbeiroService;
-
-    @Autowired
-    private SalaoService salaoService;
 
     @GetMapping("/barbeiros")
     public ModelAndView getBarbeiros() {
@@ -63,11 +57,6 @@ public class BarbeiroController {
         Barbeiro barbeiroAux = barbeiroService.getBarbeiroById(barbeiro.getIdBarbeiro());
 
         mv.addObject("barbeiro", barbeiroAux);
-
-        List<Salao> salaoNaoAssociado = salaoService.getSaloes();
-        salaoNaoAssociado.remove(barbeiro.getSalao());
-
-        mv.addObject("saloes", salaoNaoAssociado);
 
         return mv;
     }

@@ -27,10 +27,6 @@ public class Barbeiro implements Serializable {
     private String endereco;
     private String cpf;
 
-    @ManyToOne
-    @JoinColumn(name = "idSalao")
-    private Salao salao;
-
     @OneToMany
     @JoinColumn(name = "idBarbeiro")
     private List<Agendamento> agendamentos;
@@ -75,14 +71,6 @@ public class Barbeiro implements Serializable {
         this.cpf = cpf;
     }
 
-    public Salao getSalao() {
-        return salao;
-    }
-
-    public void setSalao(Salao salao) {
-        this.salao = salao;
-    }
-
     public List<Agendamento> getAgendamentos() {
         return agendamentos;
     }
@@ -94,7 +82,7 @@ public class Barbeiro implements Serializable {
     @Override
     public String toString() {
         return "Barbeiro [agendamentos=" + agendamentos + ", cidade=" + cidade + ", cpf=" + cpf + ", endereco="
-                + endereco + ", idBarbeiro=" + idBarbeiro + ", nome=" + nome + ", salao=" + salao + "]";
+                + endereco + ", idBarbeiro=" + idBarbeiro + ", nome=" + nome + "]";
     }
 
 }

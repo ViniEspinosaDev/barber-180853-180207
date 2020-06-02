@@ -31,7 +31,6 @@
         <input type="hidden" th:value="${barbeiro.idBarbeiro}" th:field="${barbeiro.idBarbeiro}" name="idBarbeiro" />
         <input type="hidden" th:value="${barbeiro.agendamentos}" th:field="${barbeiro.agendamentos}"
             name="agendamentos" />
-        <input type="hidden" th:value="${barbeiro.salao}" th:field="${barbeiro.salao}" name="salao" />
 
         <label>Nome:</label>
         <input type="text" placeholder="Digite o nome:" th:value="${barbeiro.nome}" name="nome" required />
@@ -45,12 +44,6 @@
         <label>Cidade:</label>
         <input type="text" placeholder="Digite a cidade" th:value="${barbeiro.cidade}" name="cidade" required />
         <br>
-        <label>Salão:</label>
-        <select name="idSalao" required>
-            <option value="">Vincule salão</option>
-            <option th:each="salao : ${saloes}" th:value="${salao.idSalao}" th:text="${salao.nome}">
-            </option>
-        </select>
 
         <br>
         <br>

@@ -35,10 +35,14 @@ public class Cliente implements Serializable {
     @JoinColumn(name = "idCliente")
     private List<Agendamento> agendamentos;
 
-    @ManyToMany
-    @JoinTable(name = "ClienteSalao", uniqueConstraints = @UniqueConstraint(columnNames = { "idCliente",
-            "idSalao" }), joinColumns = @JoinColumn(name = "idCliente"), inverseJoinColumns = @JoinColumn(name = "idSalao"))
-    private List<Salao> saloes;
+    /*
+     * @ManyToMany
+     * 
+     * @JoinTable(name = "ClienteSalao", uniqueConstraints
+     * = @UniqueConstraint(columnNames = { "idCliente", "idSalao" }), joinColumns
+     * = @JoinColumn(name = "idCliente"), inverseJoinColumns = @JoinColumn(name =
+     * "idSalao")) private List<Salao> saloes;
+     */
 
     public int getIdCliente() {
         return idCliente;
@@ -88,14 +92,6 @@ public class Cliente implements Serializable {
         this.agendamentos = agendamentos;
     }
 
-    public List<Salao> getSaloes() {
-        return saloes;
-    }
-
-    public void setSaloes(List<Salao> saloes) {
-        this.saloes = saloes;
-    }
-
     public String getCidade() {
         return cidade;
     }
@@ -107,8 +103,7 @@ public class Cliente implements Serializable {
     @Override
     public String toString() {
         return "Cliente [agendamentos=" + agendamentos + ", cidade=" + cidade + ", cpf=" + cpf + ", dataNascimento="
-                + dataNascimento + ", endereco=" + endereco + ", idCliente=" + idCliente + ", nome=" + nome
-                + ", saloes=" + saloes + "]";
+                + dataNascimento + ", endereco=" + endereco + ", idCliente=" + idCliente + ", nome=" + nome + "]";
     }
 
 }

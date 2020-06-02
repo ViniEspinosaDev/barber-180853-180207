@@ -26,10 +26,6 @@ public class Agendamento implements Serializable {
     private Time hora;
 
     @ManyToOne
-    @JoinColumn(name = "idSalao")
-    private Salao salao;
-
-    @ManyToOne
     @JoinColumn(name = "idBarbeiro")
     private Barbeiro barbeiro;
 
@@ -61,14 +57,6 @@ public class Agendamento implements Serializable {
         this.hora = hora;
     }
 
-    public Salao getSalao() {
-        return salao;
-    }
-
-    public void setSalao(Salao salao) {
-        this.salao = salao;
-    }
-
     public Barbeiro getBarbeiro() {
         return barbeiro;
     }
@@ -88,7 +76,7 @@ public class Agendamento implements Serializable {
     @Override
     public String toString() {
         return "Agendamento [barbeiro=" + barbeiro + ", cliente=" + cliente + ", data=" + data + ", hora=" + hora
-                + ", idAgendamento=" + idAgendamento + ", salao=" + salao + "]";
+                + ", idAgendamento=" + idAgendamento + "]";
     }
 
 }

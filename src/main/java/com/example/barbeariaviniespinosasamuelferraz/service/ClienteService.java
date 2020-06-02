@@ -2,9 +2,7 @@ package com.example.barbeariaviniespinosasamuelferraz.service;
 
 import java.util.List;
 
-import com.example.barbeariaviniespinosasamuelferraz.entity.Agendamento;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Cliente;
-import com.example.barbeariaviniespinosasamuelferraz.entity.Salao;
 import com.example.barbeariaviniespinosasamuelferraz.repository.ClienteRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,27 +30,24 @@ public class ClienteService {
 
         cliente = clienteRepository.findById(cliente.getIdCliente()).get();
 
-        if (cliente.getSaloes().size() == 0 && cliente.getAgendamentos().size() == 0) {
+        if (cliente.getAgendamentos().size() == 0) {
             clienteRepository.delete(cliente);
             return true;
         }
         return false;
     }
 
-    public boolean removerSalaoCliente(Cliente cliente, Salao salao) {
-
-        cliente = clienteRepository.findById(cliente.getIdCliente()).get();
-        List<Agendamento> agendamentosCliente = cliente.getAgendamentos();
-
-        for (Agendamento agendamento : agendamentosCliente) {
-            if (agendamento.getSalao().equals(salao)) {
-                return false;
-            }
-        }
-
-        cliente.getSaloes().remove(salao);
-        clienteRepository.save(cliente);
-
-        return true;
-    }
+    /*
+     * public boolean removerSalaoCliente(Cliente cliente, Salao salao) {
+     * 
+     * cliente = clienteRepository.findById(cliente.getIdCliente()).get();
+     * List<Agendamento> agendamentosCliente = cliente.getAgendamentos();
+     * 
+     * for (Agendamento agendamento : agendamentosCliente) { if
+     * (agendamento.getSalao().equals(salao)) { return false; } }
+     * 
+     * cliente.getSaloes().remove(salao); clienteRepository.save(cliente);
+     * 
+     * return true; }
+     */
 }
