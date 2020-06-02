@@ -24,6 +24,8 @@ public class BarbeiroController {
 
         mv.addObject("barbeiro", new Barbeiro());
         mv.addObject("barbeiros", barbeiroService.getBarbeiros());
+        
+        
 
         return mv;
     }

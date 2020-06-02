@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar barbeiro</title>
+
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+
+</head>
+
+<!-- teste -->
+
+<body>
+    <h1>Editar barbeiro</h1>
+    <a href="/">Menu |</a>
+    <a href="/barbeiros"> Barbeiros</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarBarbeiro}" th:object="${barbeiro}" method="POST" id="idBarbeiro">
+
+        <label>Cliente:</label> <span th:text="${barbeiro.idBarbeiro}"></span>
+        <br>
+        <input type="hidden" th:value="${barbeiro.idBarbeiro}" th:field="${barbeiro.idBarbeiro}" name="idBarbeiro" />
+        <input type="hidden" th:value="${barbeiro.agendamentos}" th:field="${barbeiro.agendamentos}"
+            name="agendamentos" />
+        <input type="hidden" th:value="${barbeiro.salao}" th:field="${barbeiro.salao}" name="salao" />
+
+        <label>Nome:</label>
+        <input type="text" placeholder="Digite o nome:" th:value="${barbeiro.nome}" name="nome" required />
+        <br>
+        <label>CPF:</label>
+        <input type="text" placeholder="Digite o cpf" th:value="${barbeiro.cpf}" name="cpf" required />
+        <br>
+        <label>Endereço:</label>
+        <input type="text" placeholder="Digite o endereço" th:value="${barbeiro.endereco}" name="endereco" required />
+        <br>
+        <label>Cidade:</label>
+        <input type="text" placeholder="Digite a cidade" th:value="${barbeiro.cidade}" name="cidade" required />
+        <br>
+
+        <select name="idSalao" required>
+            <option value="">Salão</option>
+            <option th:each="salao : ${saloes}" th:value="${salao.idSalao}" th:text="${salao.nome}">
+            </option>
+        </select>
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset" value="Cancelar" />
+    </form>
+
+</body>
+
+</html>
