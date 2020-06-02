@@ -1,7 +1,5 @@
 package com.example.barbeariaviniespinosasamuelferraz.controller;
 
-import java.util.List;
-
 import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
 import com.example.barbeariaviniespinosasamuelferraz.service.BarbeiroService;
 
