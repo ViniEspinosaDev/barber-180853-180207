@@ -36,19 +36,6 @@ public class ClienteController {
         return "redirect:/clientes";
     }
 
-    /*
-     * @PostMapping("/associarSalaoCliente") public String
-     * associarSalao(@ModelAttribute Salao salao, @RequestParam Integer idCliente) {
-     * 
-     * Cliente cliente = clienteService.getClienteById(idCliente);
-     * 
-     * salao = salaoService.getSalaoById(salao.getIdSalao());
-     * 
-     * cliente.getSaloes().add(salao); clienteService.salvarCliente(cliente);
-     * 
-     * return "redirect:/detalhesCliente/" + idCliente.toString(); }
-     */
-
     @GetMapping("/detalhesCliente/{idCliente}")
     public ModelAndView getClienteDetalhes(@PathVariable(name = "idCliente") Integer idCliente) {
 
@@ -69,28 +56,9 @@ public class ClienteController {
 
         mv.addObject("cliente", clienteAux);
 
-        /*
-         * List<Salao> saloesNaoAssociados = salaoService.getSaloes();
-         * saloesNaoAssociados.removeAll(clienteAux.getSaloes());
-         * 
-         * mv.addObject("saloes", saloesNaoAssociados);
-         */
         return mv;
     }
 
-    /*
-     * @GetMapping("/removerSalaoCliente/{idCliente}/{idSalao}") public String
-     * removerSalaoCliente(@PathVariable(name = "idCliente") Integer idCliente,
-     * 
-     * @PathVariable(name = "idSalao") Integer idSalao) {
-     * 
-     * Cliente cliente = clienteService.getClienteById(idCliente);
-     * 
-     * clienteService.removerSalaoCliente(cliente,
-     * salaoService.getSalaoById(idSalao));
-     * 
-     * return "redirect:/editarCliente?idCliente=" + idCliente.toString(); }
-     */
     @GetMapping("/removerCliente")
     public String removerCliente(@ModelAttribute Cliente cliente, @RequestParam Integer idCliente) {
 

@@ -2,7 +2,9 @@ package com.example.barbeariaviniespinosasamuelferraz.service;
 
 import java.util.List;
 
+import com.example.barbeariaviniespinosasamuelferraz.entity.Agendamento;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
+import com.example.barbeariaviniespinosasamuelferraz.entity.Especialidade;
 import com.example.barbeariaviniespinosasamuelferraz.repository.BarbeiroRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +37,22 @@ public class BarbeiroService {
         }
         return false;
     }
+
+    public boolean removerEspecialidadeBarbeiro(Barbeiro barbeiro, Especialidade especialidade) {
+
+        barbeiro = barbeiroRepository.findById(barbeiro.getIdBarbeiro()).get();
+        List<Agendamento> agendamentosBarbeiro = barbeiro.getAgendamentos();
+
+        for (Agendamento agendamento : agendamentosBarbeiro) {
+            if (agendamento.getEspecialidades().equals(especialidade)) {
+                return false;
+            }
+        }
+
+        barbeiro.getEspecialidades().remove(especialidade);
+        barbeiroRepository.save(barbeiro);
+
+        return true;
+    }
+
 }

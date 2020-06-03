@@ -36,18 +36,4 @@ public class ClienteService {
         }
         return false;
     }
-
-    /*
-     * public boolean removerSalaoCliente(Cliente cliente, Salao salao) {
-     * 
-     * cliente = clienteRepository.findById(cliente.getIdCliente()).get();
-     * List<Agendamento> agendamentosCliente = cliente.getAgendamentos();
-     * 
-     * for (Agendamento agendamento : agendamentosCliente) { if
-     * (agendamento.getSalao().equals(salao)) { return false; } }
-     * 
-     * cliente.getSaloes().remove(salao); clienteRepository.save(cliente);
-     * 
-     * return true; }
-     */
 }

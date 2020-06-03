@@ -32,15 +32,6 @@ public class Cliente implements Serializable {
     @JoinColumn(name = "idCliente")
     private List<Agendamento> agendamentos;
 
-    /*
-     * @ManyToMany
-     * 
-     * @JoinTable(name = "ClienteSalao", uniqueConstraints
-     * = @UniqueConstraint(columnNames = { "idCliente", "idSalao" }), joinColumns
-     * = @JoinColumn(name = "idCliente"), inverseJoinColumns = @JoinColumn(name =
-     * "idSalao")) private List<Salao> saloes;
-     */
-
     public int getIdCliente() {
         return idCliente;
     }

@@ -33,12 +33,33 @@
         <tr>
             <th>Agendamento</th>
             <th>Data</th>
+            <th>Hora</th>
             <th>Detalhes</th>
         </tr>
 
         <tr th:each="agendamento : ${barbeiro.agendamentos}">
             <td th:text="${agendamento.data}"></td>
+            <td th:text="${agendamento.hora}"></td>
             <td> <a th:href="@{'/detalhesAgendamento/' + ${agendamento.idAgendamento}}">Detalhes</a></td>
+        </tr>
+    </table>
+    <br>
+
+    Especialidade(s):
+    <table>
+        <tr>
+            <th>Especialidade</th>
+            <th>Descrição</th>
+            <th>Detalhes</th>
+            <th>Remover vinculo</th>
+        </tr>
+
+        <tr th:each="especialidade : ${barbeiro.especialidades}">
+            <td th:text="${especialidade.descricao}"></td>
+            <td> <a th:href="@{'/detalhesEspecialidade/' + ${especialidade.idEspecialidade}}">Detalhes</a></td>
+            <td> <a
+                    th:href="@{'/removerEspecialidadeBarbeiro/' + ${barbeiro.idBarbeiro} + '/' + ${especialidade.idEspecialidade}}">Remover</a>
+            </td>
         </tr>
     </table>
     <br>

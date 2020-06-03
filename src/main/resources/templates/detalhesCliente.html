@@ -44,35 +44,7 @@
     </table>
     <br>
 
-    <!--
-    Salão(ões):
-    <table>
-        <tr>
-            <th>Salão</th>
-            <th>Nome</th>
-            <th>Endereco</th>
-            <th>Detalhes</th>
-        </tr>
 
-        <tr th:each="salao : ${cliente.saloes}">
-            <td th:text="${salao.idSalao}"></td>
-            <td th:text="${salao.nome}"></td>
-            <td th:text="${salao.endereco}"></td>
-            <td> <a th:href="@{'/detalhesSalao/' + ${salao.idSalao}}">Detalhes</a></td>
-        </tr>
-    </table>
-    <br>
-
-    <form th:action="@{/associarSalaoCliente(idCliente=${cliente.idCliente})}" method="POST">
-        <label>Adicionar salão:</label>
-        <select name="idSalao" required>
-            <option value="">Novo salão</option>
-            <option th:each="salao : ${saloes}" th:value="${salao.idSalao}" th:text="${salao.nome}">
-            </option>
-        </select>
-        <input type="submit" value="Associar salão" />
-    </form>
--->
 </body>
 
 </html>

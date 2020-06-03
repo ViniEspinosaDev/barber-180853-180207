@@ -1,7 +1,11 @@
 package com.example.barbeariaviniespinosasamuelferraz.controller;
 
+import java.util.List;
+
 import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
+import com.example.barbeariaviniespinosasamuelferraz.entity.Especialidade;
 import com.example.barbeariaviniespinosasamuelferraz.service.BarbeiroService;
+import com.example.barbeariaviniespinosasamuelferraz.service.EspecialidadeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +21,9 @@ public class BarbeiroController {
 
     @Autowired
     private BarbeiroService barbeiroService;
+
+    @Autowired
+    private EspecialidadeService especialidadeService;
 
     @GetMapping("/barbeiros")
     public ModelAndView getBarbeiros() {
@@ -56,6 +63,11 @@ public class BarbeiroController {
 
         mv.addObject("barbeiro", barbeiroAux);
 
+        List<Especialidade> especialidadeNaoAssociadas = especialidadeService.getEspecialidades();
+        especialidadeNaoAssociadas.removeAll(barbeiroAux.getEspecialidades());
+
+        mv.addObject("especialidades", especialidadeNaoAssociadas);
+
         return mv;
     }
 
@@ -65,6 +77,32 @@ public class BarbeiroController {
         barbeiroService.removerBarbeiro(barbeiro);
 
         return "redirect:/barbeiros";
+    }
+
+    @GetMapping("/removerEspecialidadeBarbeiro/{idBarbeiro}/{idEspecialidade}")
+    public String removerEspecialidadeBarbeiro(@PathVariable(name = "idBarbeiro") Integer idBarbeiro,
+            @PathVariable(name = "idEspecialidade") Integer idEspecialidade) {
+
+        Barbeiro barbeiro = barbeiroService.getBarbeiroById(idBarbeiro);
+
+        barbeiroService.removerEspecialidadeBarbeiro(barbeiro,
+                especialidadeService.getEspecialidadeById(idEspecialidade));
+
+        return "redirect:/editarBarbeiro?idBarbeiro=" + idBarbeiro.toString();
+    }
+
+    @PostMapping("/associarEspecialidadeBarbeiro")
+    public String associarEspecialidadeBarbeiro(@ModelAttribute Especialidade especialidade,
+            @RequestParam Integer idBarbeiro) {
+
+        Barbeiro barbeiro = barbeiroService.getBarbeiroById(idBarbeiro);
+
+        especialidade = especialidadeService.getEspecialidadeById(especialidade.getIdEspecialidade());
+
+        barbeiro.getEspecialidades().add(especialidade);
+        barbeiroService.salvarBarbeiro(barbeiro);
+
+        return "redirect:/detalhesBarbeiro/" + idBarbeiro.toString();
     }
 
 }

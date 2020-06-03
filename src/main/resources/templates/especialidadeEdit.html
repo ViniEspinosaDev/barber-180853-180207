@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar barbeiro</title>
+    <title>Editar especialidade</title>
 
     <style>
         table,
@@ -17,36 +17,33 @@
 </head>
 
 <body>
-    <h1>Editar barbeiro</h1>
+    <h1>Editar especialidade</h1>
     <a href="/">Menu |</a>
-    <a href="/barbeiros"> Barbeiros</a>
+    <a href="/especialidades"> Especialidades</a>
     <br>
     <br>
-    <form th:action="@{/salvarBarbeiro}" th:object="${barbeiro}" method="POST" id="idBarbeiro">
+    <form th:action="@{/salvarEspecialidade}" th:object="${especialidade}" method="POST" id="idEspecialidade">
 
-        <label>Cliente:</label> <span th:text="${barbeiro.idBarbeiro}"></span>
+        <label>Especialidade:</label> <span th:text="${especialidade.idEspecialidade}"></span>
         <br>
-        <input type="hidden" th:value="${barbeiro.idBarbeiro}" th:field="${barbeiro.idBarbeiro}" name="idBarbeiro" />
-        <input type="hidden" th:value="${barbeiro.agendamentos}" th:field="${barbeiro.agendamentos}"
+        <input type="hidden" th:value="${especialidade.idEspecialidade}" th:field="${especialidade.idEspecialidade}"
+            name="idEspecialidade" />
+        <input type="hidden" th:value="${especialidade.agendamentos}" th:field="${especialidade.agendamentos}"
             name="agendamentos" />
-        <input type="hidden" th:value="${barbeiro.especialidades}" th:field="${barbeiro.especialidades}"
-            name="especialidades" />
+        <input type="hidden" th:value="${especialidade.barbeiros}" th:field="${especialidade.barbeiros}"
+            name="barbeiros" />
 
-        <label>Nome:</label>
-        <input type="text" placeholder="Digite o nome:" th:value="${barbeiro.nome}" name="nome" required />
+        <label>Descrição:</label>
+        <input type="text" placeholder="digite a descrição" th:value="${especialidade.descricao}" name="descricao"
+            required />
         <br>
-        <label>CPF:</label>
-        <input type="text" placeholder="Digite o cpf" th:value="${barbeiro.cpf}" name="cpf" required />
+        <label>Preço:</label>
+        <input type="number" placeholder="digite o preço" th:value="${especialidade.preco}" name="preco" required />
         <br>
-        <label>Endereço:</label>
-        <input type="text" placeholder="Digite o endereço" th:value="${barbeiro.endereco}" name="endereco" required />
-        <br>
-        <label>Cidade:</label>
-        <input type="text" placeholder="Digite a cidade" th:value="${barbeiro.cidade}" name="cidade" required />
+        <label>Tempo médio:</label>
+        <input type="time" th:value="${especialidade.tempoMedio}" name="tempoMedio" required />
         <br>
 
-        <br>
-        <br>
         Especialidade(s):
         <table>
             <tr>

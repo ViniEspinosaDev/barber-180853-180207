@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes da especialidade</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Detalhes da especialidade</h1>
+    <a href="/">Menu |</a>
+    <a href="/especialidades"> Especialidades</a>
+    <br>
+    <br>
+    <b>Especialidade: </b> <span th:text="${especialidade.idEspecialidade}"></span>
+    <br><b>Descrição: </b> <span th:text="${especialidade.descricao}"></span>
+    <br><b>Preço: </b> <span th:text="${especialidade.preco}"></span>
+    <br><b>Tempo médio: </b> <span th:text="${especialidade.tempoMedio}"></span>
+    <br>
+    <br>
+
+    Barbeiro(s):
+    <table>
+        <tr>
+            <th>Barbeiro</th>
+            <th>Nome</th>
+            <th>Detalhes</th>
+            <th>Remover vinculo</th>
+        </tr>
+
+        <tr th:each="barbeiro : ${especialidade.barbeiros}">
+            <td th:text="${barbeiro.nome}"></td>
+            <td> <a th:href="@{'/detalhesBarbeiro/' + ${barbeiro.idBarbeiro}}">Detalhes</a></td>
+            <td> <a
+                    th:href="@{'/removerBarbeiroEspecialidade/' + ${especialidade.idEspecialidade} + '/' + ${barbeiro.idBarbeiro}}">Remover</a>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+
+
+</body>
+
+</html>

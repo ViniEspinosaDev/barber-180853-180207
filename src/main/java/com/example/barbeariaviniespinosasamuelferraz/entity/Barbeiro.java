@@ -8,7 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+
+import javax.persistence.UniqueConstraint;
 
 @Entity
 public class Barbeiro implements Serializable {
@@ -29,6 +33,11 @@ public class Barbeiro implements Serializable {
     @OneToMany
     @JoinColumn(name = "idBarbeiro")
     private List<Agendamento> agendamentos;
+
+    @ManyToMany
+    @JoinTable(name = "BarbeiroEspecialidade", uniqueConstraints = @UniqueConstraint(columnNames = { "idBarbeiro",
+            "idEspecialidade" }), joinColumns = @JoinColumn(name = "idBarbeiro"), inverseJoinColumns = @JoinColumn(name = "idEspecialidade"))
+    private List<Especialidade> especialidades;
 
     public int getIdBarbeiro() {
         return idBarbeiro;
@@ -78,10 +87,20 @@ public class Barbeiro implements Serializable {
         this.agendamentos = agendamentos;
     }
 
+
+    public List<Especialidade> getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(List<Especialidade> especialidades) {
+        this.especialidades = especialidades;
+    }
+
     @Override
     public String toString() {
         return "Barbeiro [agendamentos=" + agendamentos + ", cidade=" + cidade + ", cpf=" + cpf + ", endereco="
-                + endereco + ", idBarbeiro=" + idBarbeiro + ", nome=" + nome + "]";
+                + endereco + ", especialidades=" + especialidades + ", idBarbeiro=" + idBarbeiro + ", nome=" + nome
+                + "]";
     }
 
 }

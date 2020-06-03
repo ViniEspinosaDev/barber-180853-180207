@@ -29,11 +29,8 @@
         <label>Cliente:</label> <span th:text="${cliente.idCliente}"></span>
         <br>
         <input type="hidden" th:value="${cliente.idCliente}" th:field="${cliente.idCliente}" name="idCliente" />
-        <input type="hidden" th:value="${cliente.agendamentos}" th:field="${cliente.agendamentos}"
-            name="agendamentos" />
-        <input type="hidden" th:value="${cliente.dataNascimento}" th:field="${cliente.dataNascimento}"
-            name="dataNascimento" />
-        <input type="hidden" th:value="${cliente.endereco}" th:field="${cliente.endereco}" name="endereco" />
+        <input type="hidden" th:value="${cliente.agendamentos}" th:field="${cliente.agendamentos}" name="agendamentos" />
+
 
         <label>Nome:</label>
         <input type="text" placeholder="Digite o nome:" th:value="${cliente.nome}" name="nome" required />
@@ -48,8 +45,7 @@
         <input type="text" placeholder="Digite a cidade" th:value="${cliente.cidade}" name="cidade" required />
         <br>
         <label>Data Nascimento:</label>
-        <input type="date" placeholder="Digite a data de nascimento" th:value="${cliente.dataNascimento}"
-            name="dataNascimento" required />
+        <input type="date" placeholder="Digite a data de nascimento" th:value="${cliente.dataNascimento}" name="dataNascimento" required />
         <br>
 
 
