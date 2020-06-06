@@ -84,9 +84,4 @@ public class Especialidade implements Serializable {
         this.agendamentos = agendamentos;
     }
 
-    @Override
-    public String toString() {
-        return "Especialidade [agendamentos=" + agendamentos + ", barbeiros=" + barbeiros + ", descricao=" + descricao
-                + ", idEspecialidade=" + idEspecialidade + ", preco=" + preco + ", tempoMedio=" + tempoMedio + "]";
-    }
 }

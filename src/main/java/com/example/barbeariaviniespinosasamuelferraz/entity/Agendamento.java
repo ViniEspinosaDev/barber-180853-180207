@@ -109,11 +109,6 @@ public class Agendamento implements Serializable {
         this.tempoEstimado = tempoEstimado;
     }
 
-    @Override
-    public String toString() {
-        return "Agendamento [barbeiro=" + barbeiro + ", cliente=" + cliente + ", data=" + data + ", especialidades="
-                + especialidades + ", hora=" + hora + ", idAgendamento=" + idAgendamento + ", precoTotal=" + precoTotal
-                + ", tempoEstimado=" + tempoEstimado + "]";
-    }
+    
 
 }

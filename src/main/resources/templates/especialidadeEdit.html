@@ -44,37 +44,24 @@
         <input type="time" th:value="${especialidade.tempoMedio}" name="tempoMedio" required />
         <br>
 
-        Especialidade(s):
+        <br>
+        <br>
+        Barbeiro(s):
         <table>
             <tr>
-                <th>Especialidade</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th>Tempo médio</th>
-                <th>Endereco</th>
+                <th>Barbeiro</th>
+                <th>Nome</th>
                 <th>Detalhes</th>
             </tr>
 
-            <tr th:each="especialidade : ${barbeiro.especialidades}">
-                <td th:text="${especialidade.idEspecialidade}"></td>
-                <td th:text="${especialidade.descricao}"></td>
-                <td th:text="${especialidade.preco}"></td>
-                <td th:text="${especialidade.tempoMedio}"></td>
-                <td> <a th:href="@{'/detalhesEspecialidade/' + ${especialidade.idEspecialidade}}">Detalhes</a></td>
+            <tr th:each="barbeiro : ${especialidade.barbeiros}">
+                <td th:text="${barbeiro.idBarbeiro}"></td>
+                <td th:text="${barbeiro.nome}"></td>
+                <td> <a th:href="@{'/detalhesBarbeiro/' + ${barbeiro.idBarbeiro}}">Detalhes</a></td>
             </tr>
         </table>
         <br>
 
-        <form th:action="@{/associarEspecialidadeBarbeiro(idBarbeiro=${barbeiro.idBarbeiro})}" method="POST">
-            <label>Adicionar nova especialidade:</label>
-            <select name="idEspecialidade" required>
-                <option value="">nova especialidade</option>
-                <option th:each="especialidade : ${especialidades}" th:value="${especialidade.idEspecialidade}"
-                    th:text="${especialidade.descricao}">
-                </option>
-            </select>
-            <input type="submit" value="Associar especialidade" />
-        </form>
 
         <br>
         <br>

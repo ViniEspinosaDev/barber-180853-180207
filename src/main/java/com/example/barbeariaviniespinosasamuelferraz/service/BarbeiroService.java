@@ -44,8 +44,10 @@ public class BarbeiroService {
         List<Agendamento> agendamentosBarbeiro = barbeiro.getAgendamentos();
 
         for (Agendamento agendamento : agendamentosBarbeiro) {
-            if (agendamento.getEspecialidades().equals(especialidade)) {
-                return false;
+            for (Especialidade espec : agendamento.getEspecialidades()) {
+                if (espec.equals(especialidade)) {
+                    return false;
+                }
             }
         }
 

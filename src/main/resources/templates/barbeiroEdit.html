@@ -45,6 +45,13 @@
         <input type="text" placeholder="Digite a cidade" th:value="${barbeiro.cidade}" name="cidade" required />
         <br>
 
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset" value="Cancelar" />
+
+
         <br>
         <br>
         Especialidade(s):
@@ -67,22 +74,7 @@
             </tr>
         </table>
         <br>
-
-        <form th:action="@{/associarEspecialidadeBarbeiro(idBarbeiro=${barbeiro.idBarbeiro})}" method="POST">
-            <label>Adicionar nova especialidade:</label>
-            <select name="idEspecialidade" required>
-                <option value="">nova especialidade</option>
-                <option th:each="especialidade : ${especialidades}" th:value="${especialidade.idEspecialidade}"
-                    th:text="${especialidade.descricao}">
-                </option>
-            </select>
-            <input type="submit" value="Associar especialidade" />
-        </form>
-
-        <br>
-        <br>
-        <input type="submit" value="Salvar" />
-        <input type="reset" value="Cancelar" />
+        
     </form>
 
 </body>

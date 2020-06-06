@@ -88,10 +88,5 @@ public class Cliente implements Serializable {
         this.cidade = cidade;
     }
 
-    @Override
-    public String toString() {
-        return "Cliente [agendamentos=" + agendamentos + ", cidade=" + cidade + ", cpf=" + cpf + ", dataNascimento="
-                + dataNascimento + ", endereco=" + endereco + ", idCliente=" + idCliente + ", nome=" + nome + "]";
-    }
 
 }

@@ -51,6 +51,10 @@ public class EspecialidadeController {
 
         mv.addObject("especialidade", especialidade);
 
+        List<Barbeiro> barbeirosNaoAssociados = barbeiroService.getBarbeiros();
+        barbeirosNaoAssociados.removeAll(especialidade.getBarbeiros());
+
+        mv.addObject("barbeiros", barbeirosNaoAssociados);
         return mv;
     }
 
@@ -63,11 +67,6 @@ public class EspecialidadeController {
         Especialidade especialidadeAux = especialidadeService.getEspecialidadeById(especialidade.getIdEspecialidade());
 
         mv.addObject("especialidade", especialidadeAux);
-
-        List<Barbeiro> barbeirosNaoAssociados = barbeiroService.getBarbeiros();
-        barbeirosNaoAssociados.removeAll(especialidadeAux.getBarbeiros());
-
-        mv.addObject("barbeiros", barbeirosNaoAssociados);
 
         return mv;
     }
@@ -89,7 +88,7 @@ public class EspecialidadeController {
 
         especialidadeService.removerBarbeiroEspecialidade(especialidade, barbeiroService.getBarbeiroById(idBarbeiro));
 
-        return "redirect:/editarEspecialidade?idEspecialidade=" + idEspecialidade.toString();
+        return "redirect:/detalhesEspecialidade/" + idEspecialidade.toString();
     }
 
     @PostMapping("/associarBarbeiroEspecialidade")

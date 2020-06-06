@@ -55,15 +55,25 @@
         </tr>
 
         <tr th:each="especialidade : ${barbeiro.especialidades}">
+            <td th:text="${especialidade.idEspecialidade}"></td>
             <td th:text="${especialidade.descricao}"></td>
             <td> <a th:href="@{'/detalhesEspecialidade/' + ${especialidade.idEspecialidade}}">Detalhes</a></td>
-            <td> <a
-                    th:href="@{'/removerEspecialidadeBarbeiro/' + ${barbeiro.idBarbeiro} + '/' + ${especialidade.idEspecialidade}}">Remover</a>
+            <td> <a th:href="@{'/removerEspecialidadeBarbeiro/' + ${barbeiro.idBarbeiro} + '/' + ${especialidade.idEspecialidade}}">Remover</a>
             </td>
         </tr>
     </table>
     <br>
 
+    <form th:action="@{/associarEspecialidadeBarbeiro(idBarbeiro=${barbeiro.idBarbeiro})}" method="POST">
+        <label>Adicionar nova especialidade:</label>
+        <select name="idEspecialidade" required>
+            <option value="">nova especialidade</option>
+            <option th:each="especialidade : ${especialidades}" th:value="${especialidade.idEspecialidade}"
+                th:text="${especialidade.descricao}">
+            </option>
+        </select>
+        <input type="submit" value="Associar especialidade" />
+    </form>
 
 
 </body>

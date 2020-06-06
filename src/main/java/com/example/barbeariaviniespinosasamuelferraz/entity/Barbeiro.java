@@ -96,11 +96,5 @@ public class Barbeiro implements Serializable {
         this.especialidades = especialidades;
     }
 
-    @Override
-    public String toString() {
-        return "Barbeiro [agendamentos=" + agendamentos + ", cidade=" + cidade + ", cpf=" + cpf + ", endereco="
-                + endereco + ", especialidades=" + especialidades + ", idBarbeiro=" + idBarbeiro + ", nome=" + nome
-                + "]";
-    }
 
 }
