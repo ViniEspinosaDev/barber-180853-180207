@@ -9,7 +9,6 @@ import com.example.barbeariaviniespinosasamuelferraz.entity.Agendamento;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Especialidade;
 import com.example.barbeariaviniespinosasamuelferraz.repository.AgendamentoRepository;
-import com.example.barbeariaviniespinosasamuelferraz.repository.BarbeiroRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -72,7 +71,15 @@ public class AgendamentoService {
             // de agendamento já existente
             if (!(horaInicial.isAfter(n.getHoraFinal()) && horaFinal.isAfter(n.getHoraFinal()))
                     && !(horaInicial.isBefore(n.getHoraInicial()) && horaFinal.isBefore(n.getHoraInicial()))) {
+
                 // Se já existir retorna falso para nao agendar novamente
+                if (n.getIdAgendamento() != agendamento.getIdAgendamento())
+                    return false;
+            }
+
+            if ((!barbeiroService.VerificarDisponibilidade(agendamento.getBarbeiro().getIdBarbeiro(),
+                    agendamento.getData(), agendamento.getHoraInicial(), agendamento.getHoraFinal()))
+                    && n.getIdAgendamento() != agendamento.getIdAgendamento()) {
                 return false;
             }
         }

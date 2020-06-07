@@ -1,5 +1,7 @@
 package com.example.barbeariaviniespinosasamuelferraz.service;
 
+import java.sql.Date;
+import java.time.LocalTime;
 import java.util.List;
 
 import com.example.barbeariaviniespinosasamuelferraz.entity.Agendamento;
@@ -36,6 +38,20 @@ public class BarbeiroService {
             return true;
         }
         return false;
+    }
+
+    public boolean VerificarDisponibilidade(int idBarbeiro, Date data, LocalTime inicial, LocalTime finals) {
+
+        Barbeiro b = getBarbeiroById(idBarbeiro);
+
+        for (Agendamento n : b.getAgendamentos()) {
+            if (!(inicial.isAfter(n.getHoraFinal()) && inicial.isAfter(n.getHoraFinal()))
+                    && !(inicial.isBefore(n.getHoraInicial()) && inicial.isBefore(n.getHoraInicial()))) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public boolean removerEspecialidadeBarbeiro(Barbeiro barbeiro, Especialidade especialidade) {

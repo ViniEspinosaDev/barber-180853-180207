@@ -1,15 +1,11 @@
 package com.example.barbeariaviniespinosasamuelferraz.controller;
 
-import java.sql.Date;
-import java.util.List;
-
 import com.example.barbeariaviniespinosasamuelferraz.entity.Agendamento;
 import com.example.barbeariaviniespinosasamuelferraz.entity.Barbeiro;
 import com.example.barbeariaviniespinosasamuelferraz.entity.DataBarbeiro;
 import com.example.barbeariaviniespinosasamuelferraz.service.AgendamentoService;
 import com.example.barbeariaviniespinosasamuelferraz.service.BarbeiroService;
 import com.example.barbeariaviniespinosasamuelferraz.service.ClienteService;
-import com.example.barbeariaviniespinosasamuelferraz.service.EspecialidadeService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,9 +27,6 @@ public class AgendamentoController {
 
     @Autowired
     private ClienteService clienteService;
-
-    @Autowired
-    private EspecialidadeService especialidadeService;
 
     @GetMapping("/agendamentos")
     public ModelAndView getAgendamentos() {
@@ -62,7 +55,6 @@ public class AgendamentoController {
         ModelAndView mv = new ModelAndView("criarAgendamento");
 
         mv.addObject("agendamento", new Agendamento());
-        mv.addObject("agendamentos", agendamentoService.getAgendamentos());
         mv.addObject("barbeiros", barbeiroService.getBarbeiros());
         mv.addObject("clientes", clienteService.getClientes());
 
@@ -78,6 +70,29 @@ public class AgendamentoController {
             return "redirect:/naoDeuCertoAgendar";
         }
 
+    }
+
+    @GetMapping("/editarAgendamento")
+    public ModelAndView editarAgendamento(@ModelAttribute Agendamento agendamento,
+            @RequestParam Integer idAgendamento) {
+
+        ModelAndView mv = new ModelAndView("agendamentoEdit");
+
+        Agendamento agendamentoAux = agendamentoService.getAgendamentoById(agendamento.getIdAgendamento());
+
+        mv.addObject("agendamento", agendamentoAux);
+        mv.addObject("barbeiros", barbeiroService.getBarbeiros());
+        mv.addObject("clientes", clienteService.getClientes());
+
+        return mv;
+    }
+
+    @GetMapping("/removerAgendamento")
+    public String removerAgendamento(@ModelAttribute Agendamento agendamento, @RequestParam Integer idAgendamento) {
+
+        agendamentoService.removerAgendamento(agendamento);
+
+        return "redirect:/agendamentos";
     }
 
     @GetMapping("/naoDeuCertoAgendar")
