@@ -50,11 +50,6 @@ public class EspecialidadeService {
             }
         }
 
-        for (Barbeiro b : especialidade.getBarbeiros()) {
-            if (b.equals(barbeiro))
-                return false;
-        }
-
         especialidade.getBarbeiros().remove(barbeiro);
         especialidadeRepository.save(especialidade);
 

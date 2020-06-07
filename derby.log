@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Sat Jun 06 18:06:58 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-8b75-459e-000012b9fc78 
+Sun Jun 07 12:00:47 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-8f4c-61b5-00001242ad88 
 on database directory C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/vinie/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
@@ -12,9 +12,9 @@ os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Sat Jun 06 18:11:33 BRT 2020:
-Shutting down instance a816c00e-0172-8b75-459e-000012b9fc78 on database directory C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
-Sat Jun 06 18:11:33 BRT 2020 Thread[Thread-23,5,main] Cleanup action starting
+Sun Jun 07 12:16:53 BRT 2020:
+Shutting down instance a816c00e-0172-8f4c-61b5-00001242ad88 on database directory C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Sun Jun 07 12:16:53 BRT 2020 Thread[Thread-22,5,main] Cleanup action starting
 ERROR XBM0I: Directory dbbarber cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
@@ -34,63 +34,7 @@ ERROR XBM0I: Directory dbbarber cannot be removed.
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:745)
 Cleanup action completed
-Sat Jun 06 18:11:33 BRT 2020 Thread[Thread-23,5,main] Cleanup action starting
-ERROR XBM0I: Directory dbbarber cannot be removed.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-Cleanup action completed
-----------------------------------------------------------------
-Sat Jun 06 18:11:36 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance f93441e2-0172-8b75-459e-000012b9fc78 
-on database directory C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
-Loaded from file:/C:/Users/vinie/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_60-b27
-user.dir=c:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz
-os.name=Windows 10
-os.arch=amd64
-os.version=10.0
-derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
-----------------------------------------------------------------
-Sat Jun 06 18:12:03 BRT 2020:
-Shutting down instance f93441e2-0172-8b75-459e-000012b9fc78 on database directory C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
-Sat Jun 06 18:12:04 BRT 2020 Thread[Thread-39,5,main] Cleanup action starting
-ERROR XBM0I: Directory dbbarber cannot be removed.
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
-	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
-	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
-	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
-	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
-	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
-	at java.lang.Thread.run(Thread.java:745)
-Cleanup action completed
-Sat Jun 06 18:12:04 BRT 2020 Thread[Thread-39,5,main] Cleanup action starting
+Sun Jun 07 12:16:53 BRT 2020 Thread[Thread-22,5,main] Cleanup action starting
 ERROR XBM0I: Directory dbbarber cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
@@ -111,8 +55,8 @@ ERROR XBM0I: Directory dbbarber cannot be removed.
 	at java.lang.Thread.run(Thread.java:745)
 Cleanup action completed
 ----------------------------------------------------------------
-Sat Jun 06 18:12:07 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 90e64212-0172-8b75-459e-000012b9fc78 
+Sun Jun 07 12:16:55 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance d7bd80dd-0172-8f4c-61b5-00001242ad88 
 on database directory C:\Users\vinie\Desktop\barbearia-viniespinosa-samuelferraz\dbbarber with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
 Loaded from file:/C:/Users/vinie/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
