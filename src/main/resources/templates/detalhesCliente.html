@@ -38,6 +38,7 @@
         </tr>
 
         <tr th:each="agendamento : ${cliente.agendamentos}">
+            <td th:text="${agendamento.idAgendamento}"></td>
             <td th:text="${agendamento.data}"></td>
             <td> <a th:href="@{'/detalhesAgendamento/' + ${agendamento.idAgendamento}}">Detalhes</a></td>
         </tr>

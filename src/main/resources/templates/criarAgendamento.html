@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento</title>
+</head>
+
+<body>
+
+    <h1>Editar Livro</h1>
+    <a href="/">Menu</a>
+    <a href="/agendamentos"> Agendamentos</a>
+    <br>
+    <br>
+    <form th:action="@{/salvarAgendamento}" method="POST">
+
+        <label>Barbeiro:</label>
+        <select th:field="${agendamento.barbeiro}" required>
+            <option value="">Escolha o barbeiro</option>
+            <option th:each="barbeiro : ${barbeiros}" th:value="${barbeiro.idBarbeiro}" th:text="${barbeiro.nome}">
+            </option>
+        </select>
+
+        <label>Cliente:</label>
+        <select th:field="${agendamento.cliente}" required>
+            <option value="">Escolha o cliente</option>
+            <option th:each="cliente : ${clientes}" th:value="${cliente.idCliente}" th:text="${cliente.nome}">
+            </option>
+        </select>
+
+        <label>Data:</label>
+        <input type="date" th:value="${agendamento.data}" name="data" required />
+        <br>
+
+        <label>Hora:</label>
+        <input type="time" th:value="${agendamento.horaInicial}" name="horaInicial" required />
+        <br>
+
+        <input type="hidden" th:value="${agendamento.barbeiro?.especialidades}" th:field="${agendamento.especialidades}"
+            name="especialidades" />
+
+        <input type="hidden" th:value="${agendamento.horaFinal}" th:field="${agendamento.horaFinal}" name="horaFinal" />
+
+
+        <br>
+        <br>
+        <input type="submit" value="Salvar" />
+        <input type="reset" value="Cancelar" />
+    </form>
+
+
+</body>
+
+</html>

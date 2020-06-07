@@ -36,6 +36,14 @@ public class EspecialidadeService {
             especialidadeRepository.delete(especialidade);
             return true;
         }
+
+        /*
+         * Esse método só permite remover a especialidade caso ela não esteja vinculada
+         * com nenhum agendamento e com nenhum barbeiro. Porém, ao tentar remover não
+         * irá dar nenhum erro na tela, apenas não irá remover, pois, ainda não aprendi
+         * a soltar pop-up em html xD
+         */
+
         return false;
     }
 

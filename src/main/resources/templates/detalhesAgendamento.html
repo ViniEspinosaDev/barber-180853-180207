@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento</title>
+</head>
+
+<body>
+    <h1>Detalhes do agendamento</h1>
+    <a href="/">Menu |</a>
+    <a href="/agendamentos"> agendamentos</a>
+    <br>
+    <br>
+    <b>Agendamento: </b> <span th:text="${agendamento.idAgendamento}"></span>
+    <br><b>Barbeiro: </b> <span th:text="${agendamento.barbeiro.nome}"></span>
+    <br><b>Cliente: </b> <span th:text="${agendamento.cliente.nome}"></span>
+    <br><b>Data: </b> <span th:text="${agendamento.data}"></span>
+    <br><b>Hora inicial: </b> <span th:text="${agendamento.horaInicial}"></span>
+    <br><b>Hora final: </b> <span th:text="${agendamento.horaFinal}"></span>
+    <br><b>Preço: </b> <span th:text="${agendamento.precoTotal}"></span>
+    <br>
+    <br>
+
+    Especialidade(s):
+    <table>
+        <tr>
+            <th>Especialidade</th>
+            <th>Descrição</th>
+            <th>Detalhes</th>
+        </tr>
+
+        <tr th:each="especialidade : ${agendamento.especialidades}">
+            <td th:text="${especialidade.idEspecialidade}"></td>
+            <td th:text="${especialidade.descricao}"></td>
+            <td> <a th:href="@{'/detalhesEspecialidade/' + ${especialidade.idEspecialidade}}">Detalhes</a></td>
+        </tr>
+    </table>
+    <br>
+
+</body>
+
+</html>

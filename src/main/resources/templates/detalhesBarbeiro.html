@@ -33,13 +33,12 @@
         <tr>
             <th>Agendamento</th>
             <th>Data</th>
-            <th>Hora</th>
             <th>Detalhes</th>
         </tr>
 
         <tr th:each="agendamento : ${barbeiro.agendamentos}">
+            <td th:text="${agendamento.idAgendamento}"></td>
             <td th:text="${agendamento.data}"></td>
-            <td th:text="${agendamento.hora}"></td>
             <td> <a th:href="@{'/detalhesAgendamento/' + ${agendamento.idAgendamento}}">Detalhes</a></td>
         </tr>
     </table>
@@ -58,7 +57,8 @@
             <td th:text="${especialidade.idEspecialidade}"></td>
             <td th:text="${especialidade.descricao}"></td>
             <td> <a th:href="@{'/detalhesEspecialidade/' + ${especialidade.idEspecialidade}}">Detalhes</a></td>
-            <td> <a th:href="@{'/removerEspecialidadeBarbeiro/' + ${barbeiro.idBarbeiro} + '/' + ${especialidade.idEspecialidade}}">Remover</a>
+            <td> <a
+                    th:href="@{'/removerEspecialidadeBarbeiro/' + ${barbeiro.idBarbeiro} + '/' + ${especialidade.idEspecialidade}}">Remover</a>
             </td>
         </tr>
     </table>

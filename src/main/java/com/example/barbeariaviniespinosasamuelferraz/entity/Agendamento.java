@@ -2,7 +2,7 @@ package com.example.barbeariaviniespinosasamuelferraz.entity;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.sql.Time;
+import java.time.LocalTime;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -28,9 +28,9 @@ public class Agendamento implements Serializable {
     private int idAgendamento;
 
     private Date data;
-    private Time hora;
+    private LocalTime horaInicial;
+    private LocalTime horaFinal;
     private double precoTotal;
-    private Time tempoEstimado;
 
     @ManyToOne
     @JoinColumn(name = "idBarbeiro")
@@ -59,14 +59,6 @@ public class Agendamento implements Serializable {
 
     public void setData(Date data) {
         this.data = data;
-    }
-
-    public Time getHora() {
-        return hora;
-    }
-
-    public void setHora(Time hora) {
-        this.hora = hora;
     }
 
     public Barbeiro getBarbeiro() {
@@ -101,14 +93,20 @@ public class Agendamento implements Serializable {
         this.precoTotal = precoTotal;
     }
 
-    public Time getTempoEstimado() {
-        return tempoEstimado;
+    public LocalTime getHoraInicial() {
+        return horaInicial;
     }
 
-    public void setTempoEstimado(Time tempoEstimado) {
-        this.tempoEstimado = tempoEstimado;
+    public void setHoraInicial(LocalTime horaInicial) {
+        this.horaInicial = horaInicial;
     }
 
-    
+    public LocalTime getHoraFinal() {
+        return horaFinal;
+    }
+
+    public void setHoraFinal(LocalTime horaFinal) {
+        this.horaFinal = horaFinal;
+    }
 
 }

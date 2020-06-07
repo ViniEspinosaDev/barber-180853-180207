@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamentos</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Todos agendamentos</h1>
+    <a href="/">Menu |</a>
+    <a href="/criarAgendamento"> Novo Agendamento</a>
+    <br>
+    <br>
+
+    <table>
+        <tr>
+            <th>Agendamentos</th>
+            <th>Barbeiro</th>
+            <th>Cliente</th>
+            <th>Data</th>
+            <th>Detalhes</th>
+            <th>Editar</th>
+            <th>Remover</th>
+        </tr>
+        <tr th:each="agendamento : ${agendamentos}">
+            <td th:text="${agendamento.idAgendamento}"></td>
+            <td th:text="${agendamento.barbeiro?.nome}"></td>
+            <td th:text="${agendamento.cliente?.nome}"></td>
+            <td th:text="${agendamento.data}"></td>
+            <td> <a th:href="@{'/detalhesAgendamento/' + ${agendamento.idAgendamento}}">Detalhes</a></td>
+            <td> <a th:href="@{'/editarAgendamento?idAgendamento=' + ${agendamento.idAgendamento}}">Editar</a></td>
+            <td> <a th:href="@{'/removerAgendamento?idAgendamento=' + ${agendamento.idAgendamento}}">Remover</a></td>
+        </tr>
+    </table>
+</body>
+
+</html>
