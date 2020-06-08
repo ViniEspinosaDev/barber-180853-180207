@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
@@ -49,6 +49,180 @@
         </tr>
     </table>
 
+</body>
+
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Barber Shop</title>
+    <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <!-- Vini Espinosa-->
+    <!-- SAmuca-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet"
+        type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles.css" rel="stylesheet" />
+</head>
+
+
+
+
+<body id="page-top">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div class="container">
+            <a class="navbar-brand js-scroll-trigger" href="/"><img src="assets/img/icon.png" alt="" /></a><button
+                class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">Menu<i class="fas fa-bars ml-1"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav text-uppercase ml-auto">
+
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#team">Team</a></li>
+
+            </div>
+        </div>
+    </nav>
+
+
+
+
+    <!-- Masthead-->
+    <header class="masthead-especialidade">
+        <div class="container">
+
+            <div class="masthead-heading text-uppercase">Confira a tabela de especialidades!</div>
+            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Especialidades</a>
+        </div>
+    </header>
+
+
+
+    <!-- FORMS-->
+
+    <br>
+    <h1 align="center">Cadastro de especialidade<span class="badge badge-secondary"></span></h1>
+    <br>
+    <form th:action="@{/salvarEspecialidade}" method="POST" align="center">
+        <div>
+
+            <div class="form-group" align="center">
+                <label>Descrição</label>
+                <input type="text" class="form-control" name="descricao" required>
+            </div>
+
+            <div class="form-group" align="center">
+                <label>Preço</label>
+                <input type="number" class="form-control" name="preco" min="0.00" required>
+            </div>
+
+            <div class="form-group" align="center">
+                <label>Tempo médio (horas)</label>
+                <input type="time" class="form-control" name="tempoMedio" required>
+            </div>
+
+
+            <input type="submit" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" value="Salvar" />
+            <input type="reset" class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" value="Limpar" />
+        </div>
+    </form>
+    <br>
+
+
+    <!-- Tabelaa -->
+    <br>
+    <h1 align="center">Tabela de barbeiros<span class="badge badge-secondary"></span></h1>
+    <br>
+
+    <table class="table table-dark" id="services">
+        <thead>
+
+
+            <tr>
+                <th scope="col">Especialidade</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Detalhes</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Remover</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="especialidade : ${especialidades}">
+                <td th:text="${especialidade.idEspecialidade}"></td>
+                <td th:text="${especialidade.descricao}"></td>
+                <td> <a th:href="@{'/detalhesEspecialidade/' + ${especialidade.idEspecialidade}}">Detalhes</a></td>
+                <td> <a
+                        th:href="@{'/editarEspecialidade?idEspecialidade=' + ${especialidade.idEspecialidade}}">Editar</a>
+                </td>
+                <td> <a
+                        th:href="@{'/removerEspecialidade?idEspecialidade=' + ${especialidade.idEspecialidade}}">Remover</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+
+    <!-- Team-->
+    <section class="page-section bg-light" id="team">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Integrantes do projeto</h2>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="assets/img/team/vini.jpg" alt="" />
+                        <h4>Vinicius Espinosa </h4>
+                        <p class="text-muted">RA:180853</p>
+
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="team-member">
+                        <img class="mx-auto rounded-circle" src="assets/img/team/samu.jpg" alt="" />
+                        <h4>Samuel Ferraz</h4>
+                        <p class="text-muted">RA:180207</p>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <!-- Contact form JS-->
+    <script src="assets/mail/jqBootstrapValidation.js"></script>
+    <script src="assets/mail/contact_me.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </body>
 
 </html>
